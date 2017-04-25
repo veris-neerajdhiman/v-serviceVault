@@ -12,6 +12,7 @@
 from __future__ import unicode_literals
 
 # 3rd party
+import uuid
 from rest_framework.exceptions import ValidationError
 
 # Django
@@ -37,6 +38,12 @@ class ServiceVault(models.Model):
             unique=True,  # because kong need unique names
             help_text=_('Required. 30 characters or fewer.'),
     )
+    uuid = models.UUIDField(
+        _('Service UUID.'),
+        default=uuid.uuid4,
+        unique=True,
+        help_text=_('This UUID will uniquely identify every registered service.')
+    )
     request_host = models.CharField(
             _('Request Host'),
             unique=True,  # because kong need unique request_path
@@ -51,6 +58,11 @@ class ServiceVault(models.Model):
     swagger_schema = JSONField(
             _('Swagger Client')
     )
+    assign_to_organization = models.BooleanField(
+            _('Assign this service to Organization'),
+            default=False,
+            help_text=_('If checked , this service will be enabled for organization and will displayed in his services .'),
+    )
     is_public = models.BooleanField(
             _('Make Service Public'),
             default=False,
@@ -64,7 +76,7 @@ class ServiceVault(models.Model):
     )
     modified_at = models.DateTimeField(
              _('modified at'),
-             auto_now_add=True,
+             auto_now=True,
              db_index=True,
              editable=False,
     )

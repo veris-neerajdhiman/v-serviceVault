@@ -28,12 +28,10 @@ vault_list = views.ServiceVaultViewSet.as_view({
 })
 vault_detail = views.ServiceVaultViewSet.as_view({
     'get': 'retrieve',
-    'put': 'update',
-    'patch': 'partial_update',
     'delete': 'destroy'
 })
 vault_apis = views.ServiceVaultViewSet.as_view({
-    'get': 'apis',
+    'get': 'get_service_apis_from_kong',
 })
 
 urlpatterns = [

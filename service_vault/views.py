@@ -27,7 +27,13 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
     """Service Vault Viewset, every resource http request handles by this class
 
     **Query Parameters**:
-        `is_public` -- true/false_, get public or private services only.
+        `is_public` -- true/false, get public or private services only.
+
+    - Two signals will be fired after a service is added.
+      - One for adding Service in Kong
+      - second for Register the Service for User on AM server if obj.assign_to_user is True
+
+    - No Service can be updated once added,
 
     """
     model = models.ServiceVault
@@ -49,7 +55,7 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
                 queryset = queryset.filter(is_public=False)
         return queryset
 
-    def apis(self, request, pk=None):
+    def get_service_apis_from_kong(self, request, pk=None):
         """
 
         :param request: Django request param

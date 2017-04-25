@@ -27,6 +27,7 @@ from service_vault import models
 class ServiceVaultSerializer(serializers.ModelSerializer):
     """
     """
+    uuid = serializers.UUIDField(read_only=True)
 
     class Meta:
         model = models.ServiceVault

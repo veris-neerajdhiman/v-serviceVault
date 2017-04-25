@@ -46,6 +46,7 @@ def add_api(name, request_host, upstream_url):
         'upstream_url': upstream_url,
         'strip_request_path': True
     }
+
     add_api_url = '{0}{1}'.format(KONG_API_HOST, 'apis/')
     response = requests.post(add_api_url, data=data)
 

@@ -322,3 +322,20 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 50
 }
 # ######### END DJANGO REST FRAMEWORK CONFIGURATION
+
+
+# KONG server url
+KONG_API_HOST = get_env_setting('KONG_API_HOST')
+
+# AM Server path to register organization Saervice
+AM_SERVER_URL = get_env_setting('AM_SERVER_URL')
+AM_SERVER_SERVICE_REGISTER_PATH = 'micro-service/am/register-service-for-organization/{SERVICE_UUID}/'
+
+
+# Default permissions for User Registered services
+DEFAULT_ORGANIZATION_SERVICE_PERM = {
+                "read": True,
+                "update": False,
+                "delete": False,
+                "create": False
+            }
