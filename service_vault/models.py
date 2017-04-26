@@ -58,11 +58,11 @@ class ServiceVault(models.Model):
     swagger_schema = JSONField(
             _('Swagger Client')
     )
-    assign_to_organization = models.BooleanField(
-            _('Assign this service to Organization'),
-            default=False,
-            help_text=_('If checked , this service will be enabled for organization and will displayed in his services .'),
-    )
+    # assign_to_organization = models.BooleanField(
+    #         _('Assign this service to Organization'),
+    #         default=False,
+    #         help_text=_('If checked , this service will be enabled for organization and will displayed in his services .'),
+    # )
     is_public = models.BooleanField(
             _('Make Service Public'),
             default=False,
