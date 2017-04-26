@@ -52,4 +52,19 @@ def add_api(name, request_host, upstream_url):
 
     if response.status_code is not 201:
         raise ValidationError(response.json())
-    return response
+    return response.json()
+
+
+def remove_api(name):
+    """name is unique in kong , so we can delete an API with name.
+
+    :param name: Name of API/Service
+    :return: HTTP 204 with API dict
+    """
+
+    remove_api_url = '{0}{1}{2}/'.format(KONG_API_HOST, 'apis/', name)
+    response = requests.delete(remove_api_url)
+
+    if response.status_code is not 204:
+        raise ValidationError(response.status_code)
+    return response.status_code

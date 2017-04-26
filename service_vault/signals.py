@@ -16,8 +16,9 @@ import requests
 
 # Django
 from django.conf import settings
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
+from django.core.exceptions import ValidationError
 
 # local
 from libs import kong
@@ -27,21 +28,37 @@ from service_vault.models import ServiceVault
 
 
 @receiver(post_save, sender=ServiceVault)
-def add_service_ob_to_kong(sender, instance, created=False, **kwargs):
+def add_service_obj_to_kong(sender, instance, created=False, **kwargs):
     """Add service to kong
 
     :param sender: Signal sender
     :param instance: Service vault instance
-    :param created: If new onj is created or updated
+    :param created: If new obj is created or updated
     :param kwargs: Signal kwargs
     """
     if created:
-        kong.add_api(
-            instance.name,
-            instance.request_host,
-            instance.upstream_url
-        )
+        try:
+            kong.add_api(
+                instance.name,
+                instance.request_host,
+                instance.upstream_url
+            )
+        except ValidationError:
+            # ToDo : Log exception
+            pass
 
+
+@receiver(post_delete, sender=ServiceVault)
+def remove_service_obj_to_kong(sender, instance, **kwargs):
+    """Remove service from kong
+
+    :param sender: Signal sender
+    :param instance: Service vault instance
+    :param kwargs: Signal kwargs
+    """
+    kong.remove_api(
+        instance.name,
+    )
 
 # @receiver(post_save, sender=ServiceVault)
 # def add_service_ob_to_kong(sender, instance, created=False, **kwargs):
