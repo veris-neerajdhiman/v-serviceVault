@@ -53,6 +53,9 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
                 queryset = queryset.filter(is_public=True)
             elif self.request.query_params.get('is_public') == 'false':
                 queryset = queryset.filter(is_public=False)
+        if 'names' in self.request.query_params:
+            names = self.request.query_params.get('names').split(',')
+            queryset = queryset.filter(name__in=names)
         return queryset
 
     def get_service_apis_from_kong(self, request, pk=None):
