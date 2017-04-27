@@ -12,10 +12,14 @@
 from __future__ import unicode_literals
 
 # 3rd party
+from rest_framework_proxy.views import ProxyView
 
 # rest-framework
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, views
+
+# Django
+from django.conf import settings
 
 # local
 
@@ -67,3 +71,25 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
         """
         response = self.get_object().get_operations()
         return Response({'operations': response}, status=status.HTTP_200_OK)
+
+
+class ProxyKongView(ProxyView):
+    """Proxy To kong
+
+    """
+    # ToDo: This a jugaad for kong Proxy, need to fix this asap.
+
+    proxy_host = 'http://192.168.1.96:8080'
+    source = '{path}'
+
+    def get_source_path(self):
+        if self.source:
+            return self.source.format(**self.kwargs)
+        return None
+
+    def get_headers(self, request):
+        headers = super(ProxyKongView, self).get_headers(request)
+        headers['HOST'] = request.META['HTTP_HOST_VERIS']
+        return headers
+
+

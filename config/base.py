@@ -326,6 +326,7 @@ REST_FRAMEWORK = {
 
 # KONG server url
 KONG_API_HOST = get_env_setting('KONG_API_HOST')
+KONG_SERVER = get_env_setting('KONG_SERVER')
 
 # AM Server path to register organization Saervice
 # AM_SERVER_URL = get_env_setting('AM_SERVER_URL')

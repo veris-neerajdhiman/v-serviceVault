@@ -34,6 +34,8 @@ vault_apis = views.ServiceVaultViewSet.as_view({
     'get': 'get_service_apis_from_kong',
 })
 
+
+
 urlpatterns = [
             url(r'^service/$',
                 vault_list,
@@ -44,5 +46,8 @@ urlpatterns = [
             url(r'^service/(?P<pk>[0-9]+)/apis/$',
                 vault_apis,
                 name='service-vault-apis'),
+            url(r'^proxy-kong/(?P<path>.*)',
+                views.ProxyKongView.as_view(),
+                name='proxy-to-kong'),
 ]
 
