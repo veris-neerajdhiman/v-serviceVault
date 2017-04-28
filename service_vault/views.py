@@ -79,7 +79,7 @@ class ProxyKongView(ProxyView):
     """
     # ToDo: This a jugaad for kong Proxy, need to fix this asap.
 
-    proxy_host = 'http://192.168.1.96:8080'
+    proxy_host = getattr(settings, 'KONG_SERVER')
     source = '{path}'
 
     def get_source_path(self):
