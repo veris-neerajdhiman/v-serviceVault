@@ -12,6 +12,7 @@
 from __future__ import unicode_literals
 
 # 3rd party
+from django.http import HttpResponse
 from rest_framework_proxy.views import ProxyView
 
 # rest-framework
@@ -92,4 +93,19 @@ class ProxyKongView(ProxyView):
         headers['HOST'] = request.META['HTTP_HOST_VERIS']
         return headers
 
+    def create_response(self, response):
+        if self.return_raw or self.proxy_settings.RETURN_RAW:
+            return HttpResponse(response.text, status=response.status_code,
+                    content_type=response.headers.get('content-type'))
+
+        status = response.status_code
+
+        # if status >= 400:
+        #     body = {
+        #         'code': status,
+        #         'error': response.reason,
+        #     }
+        # else:
+        #     body = self.parse_proxy_response(response)
+        return Response(self.parse_proxy_response(response), status)
 
