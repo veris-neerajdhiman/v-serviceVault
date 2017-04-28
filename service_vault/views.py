@@ -91,6 +91,7 @@ class ProxyKongView(ProxyView):
     def get_headers(self, request):
         headers = super(ProxyKongView, self).get_headers(request)
         headers['HOST'] = request.META.get('HTTP_HOST_VERIS')
+        headers['VERIS-RESOURCE'] = request.META.get('HTTP_VERIS_RESOURCE')
         return headers
 
     def create_response(self, response):
