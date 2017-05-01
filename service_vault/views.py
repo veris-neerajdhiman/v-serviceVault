@@ -108,5 +108,9 @@ class ProxyKongView(ProxyView):
         #     }
         # else:
         #     body = self.parse_proxy_response(response)
+
+        # override for 204 status code because ProxyView is failing in case of 204 status code.
+        if status == 204:
+            return Response(status=status)
         return Response(self.parse_proxy_response(response), status)
 
