@@ -95,9 +95,11 @@ class ProxyKongView(ProxyView):
         return headers
 
     def create_response(self, response):
+        headers = {'X-VRT-SESSION' : response.headers.get('X-VRT-SESSION')}
+
         if self.return_raw or self.proxy_settings.RETURN_RAW:
             return HttpResponse(response.text, status=response.status_code,
-                    content_type=response.headers.get('content-type'))
+                    content_type=response.headers.get('content-type'), headers=headers)
 
         status = response.status_code
 
@@ -111,6 +113,9 @@ class ProxyKongView(ProxyView):
 
         # override for 204 status code because ProxyView is failing in case of 204 status code.
         if status == 204:
-            return Response(status=status)
-        return Response(self.parse_proxy_response(response), status)
+            return Response(headers=headers, status=status)
+
+        response_data = self.parse_proxy_response(response)
+        #
+        return Response(response_data, headers=headers, status=status)
 
