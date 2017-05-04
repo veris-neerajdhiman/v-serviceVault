@@ -41,10 +41,10 @@ def add_api(name, request_host, upstream_url):
     """
     data = {
         'name': name,
-        'request_host': request_host,
-       # 'request_path': '/o',
-        'upstream_url': upstream_url,
-        'strip_request_path': True
+        'hosts': [request_host, ],
+       # 'uris': '/o',
+        'upstream_url': [upstream_url, ],
+        # 'strip_request_path': True
     }
 
     add_api_url = '{0}{1}'.format(KONG_API_HOST, 'apis/')
