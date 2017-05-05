@@ -95,11 +95,13 @@ class ProxyKongView(ProxyView):
         return headers
 
     def create_response(self, response):
-        headers = {'X-VRT-SESSION' : response.headers.get('X-VRT-SESSION')}
+        headers = {'X-VRT-SESSION': response.headers.get('X-VRT-SESSION')}
 
         if self.return_raw or self.proxy_settings.RETURN_RAW:
-            return HttpResponse(response.text, status=response.status_code,
-                    content_type=response.headers.get('content-type'), headers=headers)
+            return HttpResponse(response.text,
+                                status=response.status_code,
+                                content_type=response.headers.get('content-type'),
+                                headers=headers)
 
         status = response.status_code
 
