@@ -96,7 +96,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
-        'rest_framework.parsers.FileUploadParser',
+        # 'rest_framework.parsers.FileUploadParser',
         'service_vault.parsers.HTMLParser',   # for 500 and 404 errors
         'service_vault.parsers.PlainTextParser',
     ),
