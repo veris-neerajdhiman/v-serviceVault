@@ -38,6 +38,12 @@ class ServiceVault(models.Model):
             unique=True,  # because kong need unique names
             help_text=_('Required. 30 characters or fewer.'),
     )
+    description = models.TextField(
+            _('Service Description'),
+            null=True,
+            blank=True,
+            help_text=_('Service Description'),
+    )
     uuid = models.UUIDField(
         _('Service UUID.'),
         default=uuid.uuid4,
