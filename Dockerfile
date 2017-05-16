@@ -1,9 +1,7 @@
 FROM django
-ADD . /v-serviceVault
+ADD . /v-vault
 
-WORKDIR /v-serviceVault
+WORKDIR /v-vault
 
-RUN pip install -r ./v-serviceVault/requirements/base.txt
-
-
-
+RUN apt-get update && apt-get install -y git
+RUN pip install -r ./requirements/base.txt
