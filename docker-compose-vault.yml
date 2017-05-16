@@ -3,7 +3,7 @@ services:
   vault_db:
     image: postgres:9.6
     ports:
-     - "5432:5432"
+     - "9005:5432"
     env_file:
      - ../locale/env/vault_service
     volumes:
@@ -16,10 +16,9 @@ services:
      - ../locale/env/vault_service
     environment:
      DEBUG: 'true'
-    command: bash -c "python ./manage.py migrate && python ./manage.py runserver 0.0.0.0:8011"
+    command: bash -c "python ./manage.py migrate && python ./manage.py runserver 0.0.0.0:8014"
     volumes:
      - .:/v-vault
     ports:
-     - "8011:8011"
-#    depends_on:
-#      - vault_db
+     - "8014:8014"
+
