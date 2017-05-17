@@ -15,7 +15,7 @@ decorator==4.0.11
 Django==1.10.6
 django-debug-toolbar==1.6
 django-extensions==1.7.4
--e git://github.com/jpiron/django-rest-framework-proxy.git@7f323a3682ddede83a7bf53cdc8d24bcc24d096c#egg=django_rest_framework_proxy
+git+https://github.com/jpiron/django-rest-framework-proxy.git@7f323a3682ddede83a7bf53cdc8d24bcc24d096c#egg=django_rest_framework_proxy
 django-rest-swagger==2.1.2
 djangorestframework==3.6.2
 fido==4.1.0
