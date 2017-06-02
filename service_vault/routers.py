@@ -22,6 +22,8 @@ from django.conf.urls import url
 # own app
 from service_vault import views
 
+UUID_REGEX = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+
 vault_list = views.ServiceVaultViewSet.as_view({
     'get': 'list',
     'post': 'create'
@@ -35,15 +37,14 @@ vault_apis = views.ServiceVaultViewSet.as_view({
 })
 
 
-
 urlpatterns = [
             url(r'^service/$',
                 vault_list,
                 name='service-vault-list'),
-            url(r'^service/(?P<pk>[0-9]+)/$',
+            url(r'^service/(?P<uuid>{uuid})/$'.format(uuid=UUID_REGEX),
                 vault_detail,
                 name='service-vault-detail'),
-            url(r'^service/(?P<pk>[0-9]+)/apis/$',
+            url(r'^service/(?P<uuid>{uuid})/apis/$'.format(uuid=UUID_REGEX),
                 vault_apis,
                 name='service-vault-apis'),
             url(r'^proxy-kong/(?P<path>.*)',

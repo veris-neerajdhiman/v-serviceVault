@@ -46,6 +46,7 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
     # TODO : remove AllowAny permission with proper permission class
     permission_classes = (permissions.AllowAny, )
     serializer_class = serializers.ServiceVaultSerializer
+    lookup_field = 'uuid'
 
     def get_queryset(self, *args, **kwargs):
         """
@@ -63,11 +64,11 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(name__in=names)
         return queryset
 
-    def get_service_apis_from_kong(self, request, pk=None):
+    def get_service_apis_from_kong(self, request, uuid=None):
         """
 
         :param request: Django request param
-        :param pk: service vault primary key
+        :param uuid: service vault uuid
         :return: Service APIS or operations in swagger
         """
         response = self.get_object().get_operations()
@@ -92,10 +93,21 @@ class ProxyKongView(ProxyView):
         headers = super(ProxyKongView, self).get_headers(request)
         headers['HOST'] = request.META.get('HTTP_HOST_VERIS')
         headers['VERIS-RESOURCE'] = request.META.get('HTTP_VERIS_RESOURCE')
+        if request.META.get('HTTP_X_VRT_SESSION', None):
+            headers['X-VRT-SESSION'] = request.META.get('HTTP_X_VRT_SESSION')
+
+        if request.META.get('HTTP_KEY', None):
+            headers['KEY'] = request.META.get('HTTP_KEY')
+
         return headers
 
     def create_response(self, response):
-        headers = {'X-VRT-SESSION': response.headers.get('X-VRT-SESSION')}
+        headers = {}
+        if response.headers.get('X-VRT-SESSION', None):
+            headers = {'X-VRT-SESSION': response.headers.get('X-VRT-SESSION')}
+
+        if response.headers.get('KEY', None):
+            headers = {'KEY': response.headers.get('KEY')}
 
         if self.return_raw or self.proxy_settings.RETURN_RAW:
             return HttpResponse(response.text,

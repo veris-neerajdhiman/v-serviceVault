@@ -31,4 +31,4 @@ class ServiceVaultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.ServiceVault
-        exclude = ('created_at', 'modified_at', )
+        exclude = ('id', )
