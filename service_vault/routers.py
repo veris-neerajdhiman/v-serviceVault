@@ -30,6 +30,7 @@ vault_list = views.ServiceVaultViewSet.as_view({
 })
 vault_detail = views.ServiceVaultViewSet.as_view({
     'get': 'retrieve',
+    'patch': 'partial_update',
     'delete': 'destroy'
 })
 vault_apis = views.ServiceVaultViewSet.as_view({
@@ -47,8 +48,8 @@ urlpatterns = [
             url(r'^service/(?P<uuid>{uuid})/apis/$'.format(uuid=UUID_REGEX),
                 vault_apis,
                 name='service-vault-apis'),
-            url(r'^proxy-kong/(?P<path>.*)',
-                views.ProxyKongView.as_view(),
-                name='proxy-to-kong'),
+            # url(r'^proxy-kong/(?P<path>.*)',
+            #     views.ProxyKongView.as_view(),
+            #     name='proxy-to-kong'),
 ]
 
