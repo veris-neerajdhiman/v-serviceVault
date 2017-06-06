@@ -1,0 +1,5333 @@
+[{
+	"model": "service_vault.servicevault",
+	"pk": 40,
+	"fields": {
+		"name": "V3__Organizations",
+		"description": "",
+		"uuid": "bfa69060-a4ab-4c4c-996e-129f95bc1bf2",
+		"request_host": "organizations.veris.in",
+		"upstream_url": "http://local.veris.in:8015",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "Organization-Member Micro-service API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/micro-service/user/{owner}/organization/{token}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Organization Viewset",
+						"operationId": "user_organization_partial_update",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": "User uuid, this token will identify who is the owner of respective Organization."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "token",
+							"required": true,
+							"description": "Organization uuid, this token will uniquely identify Organization."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Required. 64 characters or fewer."
+									},
+									"owner": {
+										"type": "string",
+										"description": "User uuid, this token will identify who is the owner of respective Organization."
+									},
+									"avatar": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Organization Viewset",
+						"tags": ["micro-service"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"summary": "Organization Viewset",
+						"operationId": "user_organization_delete",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": "User uuid, this token will identify who is the owner of respective Organization."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "token",
+							"required": true,
+							"description": "Organization uuid, this token will uniquely identify Organization."
+						}],
+						"description": "Organization Viewset",
+						"tags": ["micro-service"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Organization Viewset",
+						"operationId": "user_organization_read",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": "User uuid, this token will identify who is the owner of respective Organization."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "token",
+							"required": true,
+							"description": "Organization uuid, this token will uniquely identify Organization."
+						}],
+						"description": "Organization Viewset",
+						"tags": ["micro-service"]
+					}
+				},
+				"/micro-service/user/{owner}/organization/{organization}/member/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Member uuid, this token will uniquely identify Member."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "organization",
+							"required": true,
+							"description": "Member Organization."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": "Member type, for internal user only"
+									},
+									"user": {
+										"type": "string",
+										"description": "User uuid, this uid will identify associated User with respective Member."
+									},
+									"name": {
+										"type": "string",
+										"description": "Required. 64 characters or fewer."
+									},
+									"organization": {
+										"type": "string",
+										"description": "Member Organization."
+									}
+								}
+							}
+						}],
+						"operationId": "user_organization_member_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["micro-service"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Member uuid, this token will uniquely identify Member."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "organization",
+							"required": true,
+							"description": "Member Organization."
+						}],
+						"operationId": "user_organization_member_delete",
+						"tags": ["micro-service"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Member uuid, this token will uniquely identify Member."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "organization",
+							"required": true,
+							"description": "Member Organization."
+						}],
+						"operationId": "user_organization_member_read",
+						"tags": ["micro-service"]
+					}
+				},
+				"/micro-service/user/{owner}/organization/{token}/services/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": ":param request: Django request",
+						"operationId": "user_organization_get_organization_service",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": "User uuid, this token will identify who is the owner of respective Organization."
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "token",
+							"required": true,
+							"description": "Organization uuid, this token will uniquely identify Organization."
+						}],
+						"description": ":param request: Django request\n:param owner: owner/user uuid\n:param token: organization uuid\n:return: Organization services",
+						"tags": ["micro-service"]
+					}
+				},
+				"/micro-service/user/{owner}/organization/{organization}/member/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": ":param request: Django request",
+						"operationId": "user_organization_member_create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "organization",
+							"required": true,
+							"description": "Member Organization."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name", "user", "type", "organization"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": "Member type, for internal user only"
+									},
+									"user": {
+										"type": "string",
+										"description": "User uuid, this uid will identify associated User with respective Member."
+									},
+									"name": {
+										"type": "string",
+										"description": "Required. 64 characters or fewer."
+									},
+									"organization": {
+										"type": "string",
+										"description": "Member Organization."
+									}
+								}
+							}
+						}],
+						"description": ":param request: Django request\n:param owner: owner/user uuid\n:param organization: organization token.\n:return: Just created Organization",
+						"tags": ["micro-service"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "organization",
+							"required": true,
+							"description": "Member Organization."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "user_organization_member_list",
+						"tags": ["micro-service"]
+					}
+				},
+				"/micro-service/user/{owner}/organization/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": ":param request: Django request",
+						"operationId": "user_organization_create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": "User uuid, this token will identify who is the owner of respective Organization."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name", "avatar", "owner"],
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Required. 64 characters or fewer."
+									},
+									"owner": {
+										"type": "string",
+										"description": "User uuid, this token will identify who is the owner of respective Organization."
+									},
+									"avatar": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": ":param request: Django request\n:param owner: owner/user uuid\n:return: Just created Organization",
+						"tags": ["micro-service"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Organization Viewset",
+						"operationId": "user_organization_list",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "owner",
+							"required": true,
+							"description": "User uuid, this token will identify who is the owner of respective Organization."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"description": "Organization Viewset",
+						"tags": ["micro-service"]
+					}
+				},
+				"/micro-service/member/{member_user_uuid}/organization/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "This viewset will be used to list user memberships.",
+						"operationId": "member_organization_list",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "member_user_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"description": "This viewset will be used to list user memberships.",
+						"tags": ["micro-service"]
+					}
+				}
+			},
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-04-27T08:32:31.564Z",
+		"modified_at": "2017-05-15T10:16:43.004Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 44,
+	"fields": {
+		"name": "Keen",
+		"description": null,
+		"uuid": "8c214d55-bc40-471b-bd43-788c4c4f037b",
+		"request_host": "keen.io",
+		"upstream_url": "https://api.keen.io/3.0",
+		"swagger_schema": {
+			"info": {
+				"contact": {
+					"email": "apiteam@swagger.io"
+				},
+				"termsOfService": "http://swagger.io/terms/",
+				"license": {
+					"url": "http://www.apache.org/licenses/LICENSE-2.0.html",
+					"name": "Apache 2.0"
+				},
+				"version": "3.0",
+				"description": "This is a Swagger client for keen to log events. for more info about API's check here https://keen.io/docs/api/#record-a-single-event",
+				"title": "Swagger Keen"
+			},
+			"paths": {
+				"/projects/{project_id}/events/{collection_name}": {
+					"post": {
+						"responses": {
+							"405": {
+								"description": "Invalid input"
+							}
+						},
+						"summary": "Record a single event",
+						"produces": ["application/json"],
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "project_id",
+							"required": true
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "collection_name",
+							"required": true
+						}, {
+							"type": "string",
+							"in": "header",
+							"name": "Authorization",
+							"required": true
+						}, {
+							"in": "body",
+							"name": "data",
+							"required": true,
+							"schema": {
+								"type": "string"
+							}
+						}],
+						"description": "",
+						"operationId": "addSingleEvent",
+						"tags": ["event"]
+					}
+				},
+				"/projects/{project_id}/events": {
+					"post": {
+						"responses": {
+							"405": {
+								"description": "Invalid input"
+							}
+						},
+						"summary": "Records multiple events",
+						"produces": ["application/json"],
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "project_id",
+							"required": true
+						}, {
+							"type": "string",
+							"in": "header",
+							"name": "Authorization",
+							"required": true
+						}, {
+							"in": "body",
+							"name": "data",
+							"required": true,
+							"schema": {
+								"type": "string"
+							}
+						}],
+						"description": "",
+						"operationId": "addMultipleEvent",
+						"tags": ["event"]
+					}
+				}
+			},
+			"schemes": ["https"],
+			"basePath": "/3.0",
+			"host": "api.keen.io",
+			"swagger": "2.0",
+			"tags": [{
+				"description": "Log events at keen",
+				"name": "event",
+				"externalDocs": {
+					"description": "Find out more",
+					"url": "http://swagger.io"
+				}
+			}]
+		},
+		"is_public": false,
+		"created_at": "2017-05-04T09:26:05.180Z",
+		"modified_at": "2017-05-04T09:26:05.180Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 45,
+	"fields": {
+		"name": "V3__Authentication",
+		"description": "",
+		"uuid": "7de21c98-a870-4b50-b954-392db4e50ba1",
+		"request_host": "users.veris.in",
+		"upstream_url": "http://local.veris.in:8016",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "{project_name} API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/micro-service/user/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Note : username Cannot be updated from here.",
+						"operationId": "partial_update",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "User uuid, this token will be used to link user in other services."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "Required. 100 characters or fewer."
+									},
+									"avatar": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Note : username Cannot be updated from here.",
+						"tags": ["user"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"summary": "Note : username Cannot be updated from here.",
+						"operationId": "delete",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "User uuid, this token will be used to link user in other services."
+						}],
+						"description": "Note : username Cannot be updated from here.",
+						"tags": ["user"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "get user profile",
+						"operationId": "read",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "User uuid, this token will be used to link user in other services."
+						}],
+						"description": "Note : username Cannot be updated from here.",
+						"tags": ["user"]
+					}
+				},
+				"/micro-service/user/login/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "user authentication",
+						"operationId": "user_login",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["email", "password"],
+								"properties": {
+									"password": {
+										"type": "string",
+										"description": ""
+									},
+									"email": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "user authentication",
+						"tags": ["user"]
+					}
+				},
+				"/micro-service/user/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Register a new user",
+						"operationId": "create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["password", "email", "avatar"],
+								"properties": {
+									"password": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": "Required. 100 characters or fewer."
+									},
+									"email": {
+										"type": "string",
+										"description": ""
+									},
+									"avatar": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Register a new user",
+						"tags": ["user"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "local.veris.in:8016",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-05-15T10:08:50.935Z",
+		"modified_at": "2017-05-17T11:23:50.998Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 47,
+	"fields": {
+		"name": "V3__Mistral",
+		"description": "",
+		"uuid": "662fb858-b9c8-46fb-abb8-dcfe07a5c13d",
+		"request_host": "mistral.veris.in",
+		"upstream_url": "http://192.168.1.96:8989",
+		"swagger_schema": {
+			"info": {
+				"version": "2.0",
+				"title": "Mistral API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/v2/workflows/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Create a mistral workflow",
+						"operationId": "workflow_create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name", "input"],
+								"properties": {
+									"scope": {
+										"type": "string",
+										"description": "state can be one of: private or public"
+									},
+									"definition": {
+										"type": "string",
+										"description": "Workflow definition in Mistral v2 DSL"
+									},
+									"project_id": {
+										"type": "string",
+										"description": "The same as the requester project_id or different if the scope is public."
+									},
+									"name": {
+										"type": "string",
+										"description": "name of workflow"
+									},
+									"tags": {
+										"type": "array",
+										"description": "reference to workflow ID"
+									},
+									"input": {
+										"type": "object",
+										"description": "input is a JSON structure containing workflow input values"
+									}
+								}
+							}
+						}],
+						"description": "Create a mistral workflow",
+						"tags": ["workflows"]
+					},
+					"get": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "List mistral workflows",
+						"operationId": "workflow_create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "query",
+							"name": "marker",
+							"required": false
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "limit",
+							"required": false
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "fields",
+							"required": false
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "name",
+							"required": false
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "definition",
+							"required": false
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "project_id",
+							"required": false
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "tags",
+							"required": false
+						}],
+						"description": "List mistral workflows",
+						"tags": ["workflows"]
+					}
+				},
+				"/v2/executions/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Execute a mistral workflow or action",
+						"operationId": "execution_create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["input"],
+								"properties": {
+									"workflow_id": {
+										"type": "string",
+										"description": "reference to workflow ID"
+									},
+									"id": {
+										"type": "string",
+										"description": "id is immutable and auto assigned"
+									},
+									"state": {
+										"type": "string",
+										"description": "state can be one of: IDLE, RUNNING, SUCCESS, ERROR, PAUSED"
+									},
+									"input": {
+										"type": "object",
+										"description": "input is a JSON structure containing workflow input values"
+									},
+									"workflow_name": {
+										"type": "string",
+										"description": "reference to workflow definition"
+									},
+									"description": {
+										"type": "string",
+										"description": "description of workflow execution"
+									},
+									"output": {
+										"type": "object",
+										"description": "output is a workflow output"
+									},
+									"task_execution_id": {
+										"type": "string",
+										"description": "reference to the parent task execution"
+									},
+									"state_info": {
+										"type": "string",
+										"description": "an optional state information string"
+									}
+								}
+							}
+						}],
+						"description": "Execute a mistral workflow or action",
+						"tags": ["executions"]
+					}
+				},
+				"/v2/workflows/{identifier}": {
+					"delete": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Delete a mistral workflow",
+						"operationId": "workflow_delete",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "identifier",
+							"required": true
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"scope": {
+										"type": "string",
+										"description": "state can be one of: private or public"
+									},
+									"definition": {
+										"type": "string",
+										"description": "Workflow definition in Mistral v2 DSL"
+									},
+									"project_id": {
+										"type": "string",
+										"description": "The same as the requester project_id or different if the scope is public."
+									},
+									"name": {
+										"type": "string",
+										"description": "name of workflow"
+									},
+									"tags": {
+										"type": "array",
+										"description": "reference to workflow ID"
+									},
+									"input": {
+										"type": "object",
+										"description": "input is a JSON structure containing workflow input values"
+									}
+								}
+							}
+						}],
+						"description": "Delete a mistral workflow",
+						"tags": ["workflows"]
+					},
+					"put": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Update a mistral workflow",
+						"operationId": "workflow_update",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "identifier",
+							"required": true
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"scope": {
+										"type": "string",
+										"description": "state can be one of: private or public"
+									},
+									"definition": {
+										"type": "string",
+										"description": "Workflow definition in Mistral v2 DSL"
+									},
+									"project_id": {
+										"type": "string",
+										"description": "The same as the requester project_id or different if the scope is public."
+									},
+									"name": {
+										"type": "string",
+										"description": "name of workflow"
+									},
+									"tags": {
+										"type": "array",
+										"description": "reference to workflow ID"
+									},
+									"input": {
+										"type": "object",
+										"description": "input is a JSON structure containing workflow input values"
+									}
+								}
+							}
+						}],
+						"description": "Update a mistral workflow",
+						"tags": ["workflows"]
+					},
+					"get": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Retrieve a mistral workflow",
+						"operationId": "workflow_get",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "identifier",
+							"required": true
+						}],
+						"description": "Retrieve a mistral workflow",
+						"tags": ["workflows"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "0.0.0.0:8989",
+			"definitions": {
+				"execution": {
+					"properties": {
+						"workflow_id": {
+							"type": "string",
+							"description": "reference to workflow ID"
+						},
+						"id": {
+							"type": "string",
+							"description": "id is immutable and auto assigned"
+						},
+						"state": {
+							"type": "string",
+							"description": "state can be one of: IDLE, RUNNING, SUCCESS, ERROR, PAUSED"
+						},
+						"input": {
+							"type": "object",
+							"description": "input is a JSON structure containing workflow input values"
+						},
+						"workflow_name": {
+							"type": "string",
+							"description": "reference to workflow definition"
+						},
+						"description": {
+							"type": "string",
+							"description": "description of workflow execution"
+						},
+						"output": {
+							"type": "object",
+							"description": "output is a workflow output"
+						},
+						"task_execution_id": {
+							"type": "string",
+							"description": "reference to the parent task execution"
+						},
+						"state_info": {
+							"type": "string",
+							"description": "an optional state information string"
+						}
+					}
+				},
+				"workflow": {
+					"properties": {
+						"scope": {
+							"type": "string",
+							"description": "state can be one of: private or public"
+						},
+						"updated_at": {
+							"type": "string",
+							"description": ""
+						},
+						"definition": {
+							"type": "string",
+							"description": "Workflow definition in Mistral v2 DSL"
+						},
+						"tags": {
+							"type": "array",
+							"description": "reference to workflow ID"
+						},
+						"project_id": {
+							"type": "string",
+							"description": "The same as the requester project_id or different if the scope is public."
+						},
+						"name": {
+							"type": "string",
+							"description": "name of workflow"
+						},
+						"id": {
+							"type": "string",
+							"description": "id is immutable and auto assigned"
+						},
+						"created_at": {
+							"type": "string",
+							"description": "description of workflow"
+						},
+						"input": {
+							"type": "object",
+							"description": "input is a JSON structure containing workflow input values"
+						}
+					}
+				}
+			},
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-05-22T09:36:27.019Z",
+		"modified_at": "2017-06-01T08:52:34.043Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 48,
+	"fields": {
+		"name": "V3__KeyValStore",
+		"description": "",
+		"uuid": "93ad787a-3232-48b5-af10-e5f76d752377",
+		"request_host": "redis.veris.in",
+		"upstream_url": "http://192.168.1.96:8000",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "KeyValue Store"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/api/v1/sessions/{uuid}/read/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "header",
+							"name": "Key",
+							"required": true
+						}],
+						"operationId": "sessions_read",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					}
+				},
+				"/api/v1/sessions/{uuid}/write/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "header",
+							"name": "Key",
+							"required": true
+						}],
+						"operationId": "sessions_write",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "localhost:8000",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-05-24T14:17:16.551Z",
+		"modified_at": "2017-05-24T14:17:16.551Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 49,
+	"fields": {
+		"name": "V3__Notification",
+		"description": "",
+		"uuid": "5dc46cd2-784f-42f5-a730-56048662b45f",
+		"request_host": "notify.veris.in",
+		"upstream_url": "http://local.veris.in:8011",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "V-Notification API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/micro-service/notification/push/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [],
+						"summary": ":param request:",
+						"operationId": "send_push",
+						"description": ":param request:\n:return:"
+					}
+				},
+				"/micro-service/notification/email/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": ":param request:",
+						"operationId": "send_email",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["to", "subject", "body", "provider"],
+								"properties": {
+									"subject": {
+										"type": "string",
+										"description": ""
+									},
+									"body": {
+										"type": "string",
+										"description": ""
+									},
+									"from_email": {
+										"type": "string",
+										"description": ""
+									},
+									"to": {
+										"type": "string",
+										"description": ""
+									},
+									"html_message": {
+										"type": "boolean",
+										"description": ""
+									},
+									"provider": {
+										"type": "string",
+										"description": ""
+									},
+									"notification_type": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": ":param request:\n:return:\n\nPOST Example :\n{\n    \"to\": \"example@gmail.com\",\n    \"from_email\":\"admin@example.com\",\n    \"subject\": \"micro service integration\",\n    \"provider\": \"gmail\",\n    \"body\": \"<h1>email Body comes here</h1>\",\n    \"html_message\":\"true\"\n}"
+					}
+				},
+				"/micro-service/notification/sms/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Send SMS",
+						"operationId": "send_sms",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["to", "body", "provider"],
+								"properties": {
+									"to": {
+										"type": "string",
+										"description": ""
+									},
+									"body": {
+										"type": "string",
+										"description": ""
+									},
+									"notification_type": {
+										"type": "string",
+										"description": ""
+									},
+									"provider": {
+										"type": "string",
+										"description": ""
+									},
+									"from_": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "POST EXAMPLE :\n{\n    \"to\": \"+9198********\",\n    \"from_\": \"plivo\",\n    \"provider\": \"plivo\",\n    \"body\": \"micro service message\"\n}"
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "local.veris.in:8011",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-05-25T14:05:43.794Z",
+		"modified_at": "2017-05-25T14:05:43.794Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 50,
+	"fields": {
+		"name": "V3__MFA",
+		"description": "",
+		"uuid": "6d4f96f3-6b44-489e-80dc-b4f18bab8300",
+		"request_host": "mfa.veris.in",
+		"upstream_url": "http://local.veris.in:8017",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "Rest PyOTP APIs"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/verify-otp/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [],
+						"summary": ":param request: Django request",
+						"operationId": "verify",
+						"description": ":param request: Django request\n:return: 200_ok OR 400_bad_request"
+					}
+				},
+				"/verify-otp/{otp_type})/{uuid}/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": ":param request: Django request",
+						"operationId": "verify_otp",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "otp_type",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["otp"],
+								"properties": {
+									"otp": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": ":param request: Django request\n:param otp_type: otp_type  [hotp/totp]\n:param uuid: OTP instance UUID\n:return: 200_ok OR 400_bad_request"
+					}
+				},
+				"/generate-otp/hotp/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["count"],
+								"properties": {
+									"count": {
+										"type": "integer",
+										"description": "OTP Counter."
+									}
+								}
+							}
+						}],
+						"operationId": "generate_hotp",
+						"consumes": ["application/json"],
+						"tags": ["generate-otp"]
+					}
+				},
+				"/generate-otp/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["time", "unique_identifier"],
+								"properties": {
+									"unique_identifier": {
+										"type": "string",
+										"description": ""
+									},
+									"time": {
+										"type": "integer",
+										"description": "OTP Validity-Time (in seconds)."
+									}
+								}
+							}
+						}],
+						"operationId": "generate_otp",
+						"consumes": ["application/json"]
+					}
+				},
+				"/generate-otp/totp/provision-uri/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["time", "name", "issuer_name"],
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "name of the account"
+									},
+									"issuer_name": {
+										"type": "string",
+										"description": "name of the OTP issuer"
+									},
+									"time": {
+										"type": "integer",
+										"description": "OTP Validity-Time (in seconds)."
+									}
+								}
+							}
+						}],
+						"operationId": "totp_generate_totp_provision_uri",
+						"consumes": ["application/json"],
+						"tags": ["generate-otp"]
+					}
+				},
+				"/generate-otp/totp/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["time"],
+								"properties": {
+									"time": {
+										"type": "integer",
+										"description": "OTP Validity-Time (in seconds)."
+									}
+								}
+							}
+						}],
+						"operationId": "generate_totp",
+						"consumes": ["application/json"],
+						"tags": ["generate-otp"]
+					}
+				},
+				"/generate-otp/hotp/provision-uri/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["count", "name", "issuer_name"],
+								"properties": {
+									"name": {
+										"type": "string",
+										"description": "name of the account"
+									},
+									"count": {
+										"type": "integer",
+										"description": "OTP Counter."
+									},
+									"issuer_name": {
+										"type": "string",
+										"description": "name of the OTP issuer"
+									},
+									"initial_count": {
+										"type": "string",
+										"description": "starting counter value, defaults to 0"
+									}
+								}
+							}
+						}],
+						"operationId": "hotp_generate_hotp_provision_uri",
+						"consumes": ["application/json"],
+						"tags": ["generate-otp"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "local.veris.in:8017",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-05-26T11:29:23.773Z",
+		"modified_at": "2017-06-02T07:04:06.265Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 51,
+	"fields": {
+		"name": "V3__Marketplace",
+		"description": "",
+		"uuid": "6ee1ddc7-ab7e-4243-a7be-b8285aee5514",
+		"request_host": "marketplace.veris.in",
+		"upstream_url": "http://local.veris.in:8014",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "{project_name} API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/micro-service/service-vault/service/{uuid}/apis/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": ":param request: Django request param",
+						"operationId": "service_get_service_apis_from_kong",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "This UUID will uniquely identify every registered service."
+						}],
+						"description": ":param request: Django request param\n:param uuid: service vault uuid\n:return: Service APIS or operations in swagger",
+						"tags": ["service"]
+					}
+				},
+				"/micro-service/service-vault/proxy-kong/{path}": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Proxy To kong",
+						"operationId": "proxy-kong_partial_update",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "path",
+							"required": true,
+							"description": ""
+						}],
+						"description": "Proxy To kong",
+						"tags": ["proxy-kong"]
+					},
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Proxy To kong",
+						"operationId": "proxy-kong_create",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "path",
+							"required": true,
+							"description": ""
+						}],
+						"description": "Proxy To kong",
+						"tags": ["proxy-kong"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"summary": "Proxy To kong",
+						"operationId": "proxy-kong_delete",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "path",
+							"required": true,
+							"description": ""
+						}],
+						"description": "Proxy To kong",
+						"tags": ["proxy-kong"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Proxy To kong",
+						"operationId": "proxy-kong_update",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "path",
+							"required": true,
+							"description": ""
+						}],
+						"description": "Proxy To kong",
+						"tags": ["proxy-kong"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Proxy To kong",
+						"operationId": "proxy-kong_read",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "path",
+							"required": true,
+							"description": ""
+						}],
+						"description": "Proxy To kong",
+						"tags": ["proxy-kong"]
+					}
+				},
+				"/micro-service/service-vault/service/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Service Vault Viewset, every resource http request handles by this class",
+						"operationId": "service_create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name", "request_host", "upstream_url", "swagger_schema"],
+								"properties": {
+									"swagger_schema": {
+										"type": "string",
+										"description": ""
+									},
+									"upstream_url": {
+										"type": "string",
+										"description": "Required. 200 characters or fewer."
+									},
+									"description": {
+										"type": "string",
+										"description": "Service Description"
+									},
+									"name": {
+										"type": "string",
+										"description": "Required. 30 characters or fewer."
+									},
+									"is_public": {
+										"type": "boolean",
+										"description": "If checked , this service will be publicly available for use."
+									},
+									"request_host": {
+										"type": "string",
+										"description": "Resource Host, to be passed to kong"
+									}
+								}
+							}
+						}],
+						"description": "Service Vault Viewset, every resource http request handles by this class\n\n**Query Parameters**:\n`is_public` -- true/false, get public or private services only.\n\n- Two signals will be fired after a service is added.\n- One for adding Service in Kong\n- second for Register the Service for User on AM server if obj.assign_to_user is True\n\n- No Service can be updated once added,",
+						"tags": ["service"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Service Vault Viewset, every resource http request handles by this class",
+						"operationId": "service_list",
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"description": "Service Vault Viewset, every resource http request handles by this class\n\n**Query Parameters**:\n`is_public` -- true/false, get public or private services only.\n\n- Two signals will be fired after a service is added.\n- One for adding Service in Kong\n- second for Register the Service for User on AM server if obj.assign_to_user is True\n\n- No Service can be updated once added,",
+						"tags": ["service"]
+					}
+				},
+				"/micro-service/service-vault/service/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Service Vault Viewset, every resource http request handles by this class",
+						"operationId": "service_partial_update",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "This UUID will uniquely identify every registered service."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"swagger_schema": {
+										"type": "string",
+										"description": ""
+									},
+									"upstream_url": {
+										"type": "string",
+										"description": "Required. 200 characters or fewer."
+									},
+									"description": {
+										"type": "string",
+										"description": "Service Description"
+									},
+									"name": {
+										"type": "string",
+										"description": "Required. 30 characters or fewer."
+									},
+									"is_public": {
+										"type": "boolean",
+										"description": "If checked , this service will be publicly available for use."
+									},
+									"request_host": {
+										"type": "string",
+										"description": "Resource Host, to be passed to kong"
+									}
+								}
+							}
+						}],
+						"description": "Service Vault Viewset, every resource http request handles by this class\n\n**Query Parameters**:\n`is_public` -- true/false, get public or private services only.\n\n- Two signals will be fired after a service is added.\n- One for adding Service in Kong\n- second for Register the Service for User on AM server if obj.assign_to_user is True\n\n- No Service can be updated once added,",
+						"tags": ["service"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"summary": "Service Vault Viewset, every resource http request handles by this class",
+						"operationId": "service_delete",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "This UUID will uniquely identify every registered service."
+						}],
+						"description": "Service Vault Viewset, every resource http request handles by this class\n\n**Query Parameters**:\n`is_public` -- true/false, get public or private services only.\n\n- Two signals will be fired after a service is added.\n- One for adding Service in Kong\n- second for Register the Service for User on AM server if obj.assign_to_user is True\n\n- No Service can be updated once added,",
+						"tags": ["service"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Service Vault Viewset, every resource http request handles by this class",
+						"operationId": "service_read",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "This UUID will uniquely identify every registered service."
+						}],
+						"description": "Service Vault Viewset, every resource http request handles by this class\n\n**Query Parameters**:\n`is_public` -- true/false, get public or private services only.\n\n- Two signals will be fired after a service is added.\n- One for adding Service in Kong\n- second for Register the Service for User on AM server if obj.assign_to_user is True\n\n- No Service can be updated once added,",
+						"tags": ["service"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "local.veris.in:8014",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-05-31T12:54:41.912Z",
+		"modified_at": "2017-06-02T07:10:03.771Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 53,
+	"fields": {
+		"name": "V3__Templates",
+		"description": "Templates Service",
+		"uuid": "f103651f-2132-403f-be48-a86a1c38559c",
+		"request_host": "templates.veris.in",
+		"upstream_url": "http://192.168.10.222:8018",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "Template Service API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/micro-service/templates/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Template Viewset, every authorization http request handles by this class",
+						"operationId": "create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name", "description", "schema"],
+								"properties": {
+									"description": {
+										"type": "string",
+										"description": "Template Description."
+									},
+									"name": {
+										"type": "string",
+										"description": "Template Name."
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Template Viewset, every authorization http request handles by this class",
+						"tags": ["templates"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Template Viewset, every authorization http request handles by this class",
+						"operationId": "list",
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"description": "Template Viewset, every authorization http request handles by this class",
+						"tags": ["templates"]
+					}
+				},
+				"/micro-service/templates/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Template Viewset, every authorization http request handles by this class",
+						"operationId": "update",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"description": {
+										"type": "string",
+										"description": "Template Description."
+									},
+									"name": {
+										"type": "string",
+										"description": "Template Name."
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Template Viewset, every authorization http request handles by this class",
+						"tags": ["templates"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Template Viewset, every authorization http request handles by this class",
+						"operationId": "read",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}],
+						"description": "Template Viewset, every authorization http request handles by this class",
+						"tags": ["templates"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "local.veris.in:8018",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-06-01T06:50:03.844Z",
+		"modified_at": "2017-06-05T09:27:44.429Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 54,
+	"fields": {
+		"name": "V3__APIs",
+		"description": "some description",
+		"uuid": "9d6fe4a6-85b8-45b7-93eb-b9a77787a72b",
+		"request_host": "apis.veris.in",
+		"upstream_url": "http://172.20.0.1:8000",
+		"swagger_schema": {
+			"info": {
+				"version": "0.1",
+				"title": "Veris API"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/api/v1/revision/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "ViewSet for ``Revision`` model.",
+						"operationId": "revision_list",
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"description": "ViewSet for ``Revision`` model.",
+						"tags": ["revision"]
+					}
+				},
+				"/api/v1/version/{id}/revert/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "revert to the version specified",
+						"operationId": "version_revert",
+						"parameters": [{
+							"type": "integer",
+							"in": "path",
+							"name": "id",
+							"required": true,
+							"description": "A unique integer value identifying this version."
+						}],
+						"description": "revert to the version specified\n\n:param request:\n:param pk:\n:return:",
+						"tags": ["version"]
+					}
+				},
+				"/api/v1/version/{id}/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "List all the versions of all the objects in the database.",
+						"operationId": "version_read",
+						"parameters": [{
+							"type": "integer",
+							"in": "path",
+							"name": "id",
+							"required": true,
+							"description": "A unique integer value identifying this version."
+						}],
+						"description": "List all the versions of all the objects in the database.",
+						"tags": ["version"]
+					}
+				},
+				"/api/v1/runtimes/{runtime_uuid}/sessions/{uuid}/read/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_sessions_read",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/revision/{id}/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "ViewSet for ``Revision`` model.",
+						"operationId": "revision_read",
+						"parameters": [{
+							"type": "integer",
+							"in": "path",
+							"name": "id",
+							"required": true,
+							"description": "A unique integer value identifying this revision."
+						}],
+						"description": "ViewSet for ``Revision`` model.",
+						"tags": ["revision"]
+					}
+				},
+				"/api/v1/widget-lockers/{uuid}/add/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["widgets"],
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which widget will be called based on what rules."
+									},
+									"widgets": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_add",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					}
+				},
+				"/api/v1/sessions/{uuid}/read/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "sessions_read",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					}
+				},
+				"/api/v1/widgets/{uuid}/{process_uuid}/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Processes Service",
+						"operationId": "widgets_create",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Processes Service\nwhile maintaining a session.",
+						"tags": ["widgets"]
+					}
+				},
+				"/api/v1/processes/{uuid}/execute/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["schema", "name"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "processes_execute_create",
+						"consumes": ["application/json"],
+						"tags": ["processes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "processes_execute_read",
+						"tags": ["processes"]
+					}
+				},
+				"/api/v1/widget-lockers/{widget_locker_uuid}/widgets/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "widget_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"process_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"process_locker_token": {
+										"type": "string",
+										"description": "Token of Process Locker to which will be loaded when a Widget is called."
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": "Widget Data, the data to be filled by admin, using admin widget designed by developer"
+									},
+									"template": {
+										"type": "string",
+										"description": "Widget Template, the list of components with their layout & styles"
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_widgets_create",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "widget_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "widget-lockers_widgets_list",
+						"tags": ["widget-lockers"]
+					}
+				},
+				"/api/v1/widgets/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "widgets_list",
+						"tags": ["widgets"]
+					}
+				},
+				"/api/v1/processes/system/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [],
+						"operationId": "processes_system",
+						"tags": ["processes"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/{uuid}/client/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_client",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/sessions/{uuid}/write/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "sessions_write",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					}
+				},
+				"/api/v1/process-lockers/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which process will be called based on what rules."
+									},
+									"processes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_delete",
+						"tags": ["process-lockers"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["processes"],
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which process will be called based on what rules."
+									},
+									"processes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_update",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_read",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/processes/{uuid}/schema/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "processes_schema",
+						"tags": ["processes"]
+					}
+				},
+				"/api/v1/version/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "List all the versions of all the objects in the database.",
+						"operationId": "version_list",
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"description": "List all the versions of all the objects in the database.",
+						"tags": ["version"]
+					}
+				},
+				"/api/v1/runtimes/{runtime_uuid}/sessions/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_sessions_create",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "runtimes_sessions_list",
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/{uuid}/execute/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["schema", "name"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_processes_execute_create",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_execute_read",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/{uuid}/server/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_server",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/processes/{uuid}/client/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "processes_client",
+						"tags": ["processes"]
+					}
+				},
+				"/api/v1/widget-lockers/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["widgets"],
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which widget will be called based on what rules."
+									},
+									"widgets": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_create",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "widget-lockers_list",
+						"tags": ["widget-lockers"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/{uuid}/schema/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_schema",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/system/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_system",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/runtimes/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"widget_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"widget_locker_token": {
+										"type": "string",
+										"description": "Token of Widget Locker to which will be loaded when a runtime is called."
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "runtimes_delete",
+						"tags": ["runtimes"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"widget_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"widget_locker_token": {
+										"type": "string",
+										"description": "Token of Widget Locker to which will be loaded when a runtime is called."
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_update",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "runtimes_read",
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/processes/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["schema", "name"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "processes_create",
+						"consumes": ["application/json"],
+						"tags": ["processes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "processes_list",
+						"tags": ["processes"]
+					}
+				},
+				"/api/v1/runtimes/{uuid}/widgets/{widget_uuid}/{action}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Widgets Service",
+						"operationId": "runtimes_widgets_partial_update",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "action",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "widget_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Widgets Service\nwhile maintaining a session.",
+						"tags": ["runtimes"]
+					},
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Widgets Service",
+						"operationId": "runtimes_widgets_create",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "action",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "widget_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Widgets Service\nwhile maintaining a session.",
+						"tags": ["runtimes"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Widgets Service",
+						"operationId": "runtimes_widgets_delete",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "action",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "widget_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Widgets Service\nwhile maintaining a session.",
+						"tags": ["runtimes"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Widgets Service",
+						"operationId": "runtimes_widgets_update",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "action",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "widget_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Widgets Service\nwhile maintaining a session.",
+						"tags": ["runtimes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Widgets Service",
+						"operationId": "runtimes_widgets_read",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "action",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "widget_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Widgets Service\nwhile maintaining a session.",
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/process-lockers/{uuid}/add/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["processes"],
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which process will be called based on what rules."
+									},
+									"processes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_add",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_processes_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_delete",
+						"tags": ["process-lockers"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["schema", "name"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_processes_update",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "process-lockers_processes_read",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/processes/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "processes_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["processes"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "processes_delete",
+						"tags": ["processes"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["schema", "name"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "processes_update",
+						"consumes": ["application/json"],
+						"tags": ["processes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "processes_read",
+						"tags": ["processes"]
+					}
+				},
+				"/api/v1/widget-lockers/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which widget will be called based on what rules."
+									},
+									"widgets": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "widget-lockers_delete",
+						"tags": ["widget-lockers"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["widgets"],
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which widget will be called based on what rules."
+									},
+									"widgets": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_update",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "widget-lockers_read",
+						"tags": ["widget-lockers"]
+					}
+				},
+				"/api/v1/runtime-lockers/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtimes"],
+								"properties": {
+									"runtimes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_create",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "runtime-lockers_list",
+						"tags": ["runtime-lockers"]
+					}
+				},
+				"/api/v1/runtime-lockers/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"runtimes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}],
+						"operationId": "runtime-lockers_delete",
+						"tags": ["runtime-lockers"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtimes"],
+								"properties": {
+									"runtimes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_update",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}],
+						"operationId": "runtime-lockers_read",
+						"tags": ["runtime-lockers"]
+					}
+				},
+				"/api/v1/runtime-lockers/{runtime_locker_uuid}/runtimes/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"widget_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"widget_locker_token": {
+										"type": "string",
+										"description": "Token of Widget Locker to which will be loaded when a runtime is called."
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_runtimes_create",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}],
+						"operationId": "runtime-lockers_runtimes_list",
+						"tags": ["runtime-lockers"]
+					}
+				},
+				"/api/v1/sessions/{uuid}/history/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "gets the history of a particular instance",
+						"operationId": "sessions_history",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}],
+						"description": "gets the history of a particular instance\n\n:param request:\n:param pk:\n:return:",
+						"tags": ["sessions"]
+					}
+				},
+				"/api/v1/sessions/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "sessions_create",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "sessions_list",
+						"tags": ["sessions"]
+					}
+				},
+				"/api/v1/widget-lockers/{widget_locker_uuid}/widgets/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "widget_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"process_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"process_locker_token": {
+										"type": "string",
+										"description": "Token of Process Locker to which will be loaded when a Widget is called."
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": "Widget Data, the data to be filled by admin, using admin widget designed by developer"
+									},
+									"template": {
+										"type": "string",
+										"description": "Widget Template, the list of components with their layout & styles"
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_widgets_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "widget_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "widget-lockers_widgets_delete",
+						"tags": ["widget-lockers"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "widget_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"process_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"process_locker_token": {
+										"type": "string",
+										"description": "Token of Process Locker to which will be loaded when a Widget is called."
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": "Widget Data, the data to be filled by admin, using admin widget designed by developer"
+									},
+									"template": {
+										"type": "string",
+										"description": "Widget Template, the list of components with their layout & styles"
+									}
+								}
+							}
+						}],
+						"operationId": "widget-lockers_widgets_update",
+						"consumes": ["application/json"],
+						"tags": ["widget-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "widget_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "widget-lockers_widgets_read",
+						"tags": ["widget-lockers"]
+					}
+				},
+				"/api/v1/widgets/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"process_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"process_locker_token": {
+										"type": "string",
+										"description": "Token of Process Locker to which will be loaded when a Widget is called."
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": "Widget Data, the data to be filled by admin, using admin widget designed by developer"
+									},
+									"template": {
+										"type": "string",
+										"description": "Widget Template, the list of components with their layout & styles"
+									}
+								}
+							}
+						}],
+						"operationId": "widgets_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["widgets"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "widgets_delete",
+						"tags": ["widgets"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"process_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"process_locker_token": {
+										"type": "string",
+										"description": "Token of Process Locker to which will be loaded when a Widget is called."
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": "Widget Data, the data to be filled by admin, using admin widget designed by developer"
+									},
+									"template": {
+										"type": "string",
+										"description": "Widget Template, the list of components with their layout & styles"
+									}
+								}
+							}
+						}],
+						"operationId": "widgets_update",
+						"consumes": ["application/json"],
+						"tags": ["widgets"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "widgets_read",
+						"tags": ["widgets"]
+					}
+				},
+				"/api/v1/process-lockers/{process_locker_uuid}/processes/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["schema", "name"],
+								"properties": {
+									"type": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"schema": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_processes_create",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "process_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "ordering",
+							"required": false,
+							"description": "Which field to use when ordering the results."
+						}, {
+							"type": "string",
+							"in": "query",
+							"name": "search",
+							"required": false,
+							"description": "A search term."
+						}],
+						"operationId": "process-lockers_processes_list",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/runtimes/{runtime_uuid}/sessions/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_sessions_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}],
+						"operationId": "runtimes_sessions_delete",
+						"tags": ["runtimes"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_sessions_update",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/runtimes/{uuid}/widgets/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "A Proxy ViewSet to fetch data from the Widgets Service",
+						"operationId": "runtimes_widgets_list",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"description": "A Proxy ViewSet to fetch data from the Widgets Service\nwhile maintaining a session.",
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/runtimes/{runtime_uuid}/sessions/{uuid}/history/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "gets the history of a particular instance",
+						"operationId": "runtimes_sessions_history",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}],
+						"description": "gets the history of a particular instance\n\n:param request:\n:param pk:\n:return:",
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/runtime-lockers/{runtime_locker_uuid}/runtimes/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"widget_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"widget_locker_token": {
+										"type": "string",
+										"description": "Token of Widget Locker to which will be loaded when a runtime is called."
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_runtimes_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "runtime-lockers_runtimes_delete",
+						"tags": ["runtime-lockers"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"widget_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"widget_locker_token": {
+										"type": "string",
+										"description": "Token of Widget Locker to which will be loaded when a runtime is called."
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_runtimes_update",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_locker_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "runtime-lockers_runtimes_read",
+						"tags": ["runtime-lockers"]
+					}
+				},
+				"/api/v1/runtime-lockers/{uuid}/add/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtimes"],
+								"properties": {
+									"runtimes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_add",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					}
+				},
+				"/api/v1/process-lockers/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["processes"],
+								"properties": {
+									"rules": {
+										"type": "string",
+										"description": "Rules config, tells us which process will be called based on what rules."
+									},
+									"processes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "process-lockers_create",
+						"consumes": ["application/json"],
+						"tags": ["process-lockers"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}],
+						"operationId": "process-lockers_list",
+						"tags": ["process-lockers"]
+					}
+				},
+				"/api/v1/sessions/{uuid}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "sessions_partial_update",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}],
+						"operationId": "sessions_delete",
+						"tags": ["sessions"]
+					},
+					"put": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "sessions_update",
+						"consumes": ["application/json"],
+						"tags": ["sessions"]
+					}
+				},
+				"/api/v1/runtime-lockers/{uuid}/session/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtimes"],
+								"properties": {
+									"runtimes": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtime-lockers_session",
+						"consumes": ["application/json"],
+						"tags": ["runtime-lockers"]
+					}
+				},
+				"/api/v1/runtimes/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["name"],
+								"properties": {
+									"widget_locker_uuid": {
+										"type": "string",
+										"description": ""
+									},
+									"description": {
+										"type": "string",
+										"description": ""
+									},
+									"name": {
+										"type": "string",
+										"description": ""
+									},
+									"widget_locker_token": {
+										"type": "string",
+										"description": "Token of Widget Locker to which will be loaded when a runtime is called."
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_create",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					},
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "integer",
+							"in": "query",
+							"name": "limit",
+							"required": false,
+							"description": "Number of results to return per page."
+						}, {
+							"type": "integer",
+							"in": "query",
+							"name": "offset",
+							"required": false,
+							"description": "The initial index from which to return the results."
+						}],
+						"operationId": "runtimes_list",
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/runtimes/{runtime_uuid}/sessions/{uuid}/write/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "runtime_uuid",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": "A unique identifier for each Session along with Runtime. Non-editable, to be generated by system itself."
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["runtime"],
+								"properties": {
+									"runtime": {
+										"type": "string",
+										"description": ""
+									},
+									"data": {
+										"type": "string",
+										"description": ""
+									}
+								}
+							}
+						}],
+						"operationId": "runtimes_sessions_write",
+						"consumes": ["application/json"],
+						"tags": ["runtimes"]
+					}
+				},
+				"/api/v1/processes/{uuid}/server/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "uuid",
+							"required": true,
+							"description": ""
+						}],
+						"operationId": "processes_server",
+						"tags": ["processes"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "localhost:8000",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-06-01T08:47:03.526Z",
+		"modified_at": "2017-06-02T07:31:56.676Z"
+	}
+}, {
+	"model": "service_vault.servicevault",
+	"pk": 55,
+	"fields": {
+		"name": "V3__Authorization",
+		"description": "AM Server",
+		"uuid": "31ddde15-4b88-41ac-a5fc-af9841cc0690",
+		"request_host": "am.veris.in",
+		"upstream_url": "http://192.168.10.222:8013",
+		"swagger_schema": {
+			"info": {
+				"version": "",
+				"title": "Authorization (AM SerVer)"
+			},
+			"securityDefinitions": {
+				"basic": {
+					"type": "basic"
+				}
+			},
+			"paths": {
+				"/micro-service/am/policy/validate/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "check authorization w.r.t target",
+						"operationId": "validate_policy_permission",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["source", "source_permission_set"],
+								"properties": {
+									"source": {
+										"type": "string",
+										"description": ""
+									},
+									"source_permission_set": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "check authorization w.r.t target",
+						"tags": ["policy"]
+					}
+				},
+				"/micro-service/am/policy/": {
+					"post": {
+						"responses": {
+							"201": {
+								"description": ""
+							}
+						},
+						"summary": "Authorization Viewset, every authorization http request handles by this class",
+						"operationId": "create",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"required": ["source", "source_permission_set"],
+								"properties": {
+									"source": {
+										"type": "string",
+										"description": ""
+									},
+									"source_permission_set": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Authorization Viewset, every authorization http request handles by this class",
+						"tags": ["policy"]
+					}
+				},
+				"/micro-service/am/policy/{source_pk}/{perm_pk}/": {
+					"patch": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Policy Permission set will be updated here",
+						"operationId": "partial_update",
+						"consumes": ["application/json"],
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "perm_pk",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "source_pk",
+							"required": true,
+							"description": ""
+						}, {
+							"in": "body",
+							"name": "data",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"source": {
+										"type": "string",
+										"description": ""
+									},
+									"source_permission_set": {
+										"type": "array",
+										"items": {
+											"type": "string"
+										},
+										"description": ""
+									}
+								}
+							}
+						}],
+						"description": "Policy Permission set will be updated here\n\n:param request:\n:param source_pk: policy pk\n:param perm_pk: policy permission pk\n:return: permission set",
+						"tags": ["policy"]
+					},
+					"delete": {
+						"responses": {
+							"204": {
+								"description": ""
+							}
+						},
+						"summary": "Policy Permission set will be deleted here",
+						"operationId": "delete",
+						"parameters": [{
+							"type": "string",
+							"in": "path",
+							"name": "perm_pk",
+							"required": true,
+							"description": ""
+						}, {
+							"type": "string",
+							"in": "path",
+							"name": "source_pk",
+							"required": true,
+							"description": ""
+						}],
+						"description": "Policy Permission set will be deleted here\n\n:param request:\n:param source_pk: policy pk\n:param perm_pk: policy permission pk\n:return: permission set",
+						"tags": ["policy"]
+					}
+				},
+				"/micro-service/am/policy/{id}/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": "Authorization Viewset, every authorization http request handles by this class",
+						"operationId": "read",
+						"parameters": [{
+							"type": "integer",
+							"in": "path",
+							"name": "id",
+							"required": true,
+							"description": "A unique integer value identifying this Authorization Policy."
+						}],
+						"description": "Authorization Viewset, every authorization http request handles by this class",
+						"tags": ["policy"]
+					}
+				},
+				"/micro-service/am/policy/list/": {
+					"get": {
+						"responses": {
+							"200": {
+								"description": ""
+							}
+						},
+						"summary": ":param source: source",
+						"operationId": "list_source_policy",
+						"parameters": [],
+						"description": ":param source: source\n:return: source resources.",
+						"tags": ["policy"]
+					}
+				}
+			},
+			"schemes": ["http"],
+			"host": "local.veris.in:8013",
+			"swagger": "2.0"
+		},
+		"is_public": false,
+		"created_at": "2017-06-05T07:08:57.895Z",
+		"modified_at": "2017-06-05T07:12:27.328Z"
+	}
+}]

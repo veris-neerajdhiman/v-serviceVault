@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: vault-service
+  labels:
+    name: vault-service
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        name: vault-service
+    spec:
+      containers:
+      - name: vault-service
+        image: inforian/vault-service:v
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: secrets
+          mountPath: /etc/secrets
+          readOnly: true
+      volumes:
+      - name: secrets
+        secret:
