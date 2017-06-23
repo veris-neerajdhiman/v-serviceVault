@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^docs/', include_docs_urls(title=API_TITLE, description='')),
 
 
-    url(r'^micro-service/service-vault/', include(servicevault_router)),
+    url(r'^micro-service/service-vault/', include(servicevault_router, namespace='vault-urls')),
 
 ]
 
