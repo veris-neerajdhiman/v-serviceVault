@@ -3,7 +3,7 @@
 
 """
 - service_vault.views
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 - This file contains service-vault views means all http request/routers points to this file.
 """
@@ -12,15 +12,12 @@
 from __future__ import unicode_literals
 
 # 3rd party
-from django.http import HttpResponse
-from rest_framework_proxy.views import ProxyView
 
 # rest-framework
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions, status, views
+from rest_framework import viewsets, permissions, status
 
 # Django
-from django.conf import settings
 
 # local
 
@@ -73,63 +70,3 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
         """
         response = self.get_object().get_operations()
         return Response({'operations': response}, status=status.HTTP_200_OK)
-
-
-class ProxyKongView(ProxyView):
-    """Proxy To kong
-
-    """
-    # ToDo: This a jugaad for kong Proxy, need to fix this asap.
-
-    proxy_host = getattr(settings, 'KONG_SERVER')
-    source = '{path}'
-
-    def get_source_path(self):
-        if self.source:
-            return self.source.format(**self.kwargs)
-        return None
-
-    def get_headers(self, request):
-        headers = super(ProxyKongView, self).get_headers(request)
-        headers['HOST'] = request.META.get('HTTP_HOST_VERIS')
-        headers['VERIS-RESOURCE'] = request.META.get('HTTP_VERIS_RESOURCE')
-        if request.META.get('HTTP_X_VRT_SESSION', None):
-            headers['X-VRT-SESSION'] = request.META.get('HTTP_X_VRT_SESSION')
-
-        if request.META.get('HTTP_KEY', None):
-            headers['KEY'] = request.META.get('HTTP_KEY')
-
-        return headers
-
-    def create_response(self, response):
-        headers = {}
-        if response.headers.get('X-VRT-SESSION', None):
-            headers = {'X-VRT-SESSION': response.headers.get('X-VRT-SESSION')}
-
-        if response.headers.get('KEY', None):
-            headers = {'KEY': response.headers.get('KEY')}
-
-        if self.return_raw or self.proxy_settings.RETURN_RAW:
-            return HttpResponse(response.text,
-                                status=response.status_code,
-                                content_type=response.headers.get('content-type'),
-                                headers=headers)
-
-        status = response.status_code
-
-        # if status >= 400:
-        #     body = {
-        #         'code': status,
-        #         'error': response.reason,
-        #     }
-        # else:
-        #     body = self.parse_proxy_response(response)
-
-        # override for 204 status code because ProxyView is failing in case of 204 status code.
-        if status == 204:
-            return Response(headers=headers, status=status)
-
-        response_data = self.parse_proxy_response(response)
-        #
-        return Response(response_data, headers=headers, status=status)
-

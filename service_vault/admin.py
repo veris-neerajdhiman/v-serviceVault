@@ -4,7 +4,7 @@
 
 """
 - service_vault.admin
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 - This file contains the admin models of Service Vault.
  """

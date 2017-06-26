@@ -3,7 +3,7 @@
 
 """
 - service_vault.models
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 - This file contains the Service Vault models that will map into DB tables and Every micro-service will gets register here
  """
@@ -64,11 +64,6 @@ class ServiceVault(models.Model):
     swagger_schema = JSONField(
             _('Swagger Client')
     )
-    # assign_to_organization = models.BooleanField(
-    #         _('Assign this service to Organization'),
-    #         default=False,
-    #         help_text=_('If checked , this service will be enabled for organization and will displayed in his services .'),
-    # )
     is_public = models.BooleanField(
             _('Make Service Public'),
             default=False,

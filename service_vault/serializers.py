@@ -3,7 +3,7 @@
 
 """
 - service_vault.serializers
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - This file contains Service Vault app serializers
 """
