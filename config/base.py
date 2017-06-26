@@ -56,8 +56,9 @@ DEBUG = False
 
 # ######### TEST RUNNER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/releases/dev/#new-test-runner
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
-# ######### END TEST RUNNER CONFIGURATION
+# TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = ['--with-spec', '--spec-color', '--verbosity=1', ]
 
 
 # ######### MANAGER CONFIGURATION
@@ -153,13 +154,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 # ######### END STATIC FILE CONFIGURATION
-
-
-# ######### SECRET CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
-# Note: This key should only be used for development and testing.
-SECRET_KEY = r"ugdn_k*$*g3b_g3x$hf4mxm#l$h*si9&u-@5aokaumjz=#x5g7"
-# ######### END SECRET CONFIGURATION
 
 
 # ######### SITE CONFIGURATION
@@ -325,16 +319,3 @@ REST_FRAMEWORK = {
 # KONG server url
 KONG_API_HOST = get_env_setting('KONG_API_HOST')
 KONG_SERVER = get_env_setting('KONG_SERVER')
-
-# AM Server path to register organization Saervice
-# AM_SERVER_URL = get_env_setting('AM_SERVER_URL')
-# AM_SERVER_SERVICE_REGISTER_PATH = 'micro-service/am/register-service-for-organization/{SERVICE_UUID}/'
-
-
-# Default permissions for User Registered services
-# DEFAULT_ORGANIZATION_SERVICE_PERM = {
-#                 "read": True,
-#                 "update": False,
-#                 "delete": False,
-#                 "create": False
-#             }

@@ -3,7 +3,7 @@
 
 """
 - service-vault.app_kong_register
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - This file contains the function to register service-vault app in Kong
 """

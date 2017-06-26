@@ -48,8 +48,5 @@ urlpatterns = [
             url(r'^service/(?P<uuid>{uuid})/apis/$'.format(uuid=UUID_REGEX),
                 vault_apis,
                 name='service-vault-apis'),
-            # url(r'^proxy-kong/(?P<path>.*)',
-            #     views.ProxyKongView.as_view(),
-            #     name='proxy-to-kong'),
 ]
 
