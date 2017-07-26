@@ -31,4 +31,18 @@ class ServiceVaultSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.ServiceVault
-        exclude = ('id', )
+        exclude = ('id', 'user', )
+
+    def create(self, validated_data):
+        """
+
+        :param validated_data: Validated data
+        :return: vault obj
+        """
+        user = self.context.get('request').user
+
+        validated_data.update({
+            'user': user
+        })
+
+        return models.ServiceVault.objects.create(**validated_data)

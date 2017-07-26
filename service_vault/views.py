@@ -40,10 +40,17 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
     """
     model = models.ServiceVault
     queryset = model.objects.all()
-    # TODO : remove AllowAny permission with proper permission class
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticated, )
     serializer_class = serializers.ServiceVaultSerializer
     lookup_field = 'uuid'
+
+    def get_serializer_context(self):
+        """
+         Extra context provided to the serializer class.
+        """
+        return {
+            'request': self.request,  # request object is passed here
+            }
 
     def get_queryset(self, *args, **kwargs):
         """
@@ -51,6 +58,8 @@ class ServiceVaultViewSet(viewsets.ModelViewSet):
         by filtering against a `is_public` query parameter in the URL.
         """
         queryset = super(ServiceVaultViewSet, self).get_queryset(*args, **kwargs)
+        queryset = queryset.filter(user=self.request.user)
+
         if 'is_public' in self.request.query_params:
             if self.request.query_params.get('is_public') == 'true':
                 queryset = queryset.filter(is_public=True)
