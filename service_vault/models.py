@@ -17,6 +17,7 @@ from rest_framework.exceptions import ValidationError
 
 # Django
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.postgres.fields import JSONField
 
@@ -30,6 +31,8 @@ class ServiceVault(models.Model):
     """Service Collection Model
 
     """
+    # Relation
+    user = models.ForeignKey(User)
 
     # Attributes
     name = models.CharField(
